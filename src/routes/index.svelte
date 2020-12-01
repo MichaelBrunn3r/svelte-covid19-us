@@ -13,6 +13,8 @@
 	import Stat from '../components/Stat.svelte';
 	import Chart from '../components/Chart.svelte';
 	import TableContainer from '../components/TableContainer.svelte';
+import About from './about.svelte';
+import Nav from '../components/Nav.svelte';
 
 	export let usStats;
 </script>
@@ -27,6 +29,6 @@
 	</div>
 </div>
 
-<Stat/>
+<Stat {...usStats}/>
 <Chart/>
 <TableContainer/>
