@@ -5,7 +5,13 @@
 </script>
 
 <script>
+	import Stat from '../components/Stat.svelte';
+	import Chart from '../components/Chart.svelte';
+	import TableContainer from '../components/TableContainer.svelte';
+
 	export let state;
 </script>
 
-<h1>{state}</h1>
+<h1>State: {state}</h1>
+<Stat/>
+<Chart/>
