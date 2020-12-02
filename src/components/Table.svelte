@@ -1,4 +1,5 @@
 <script>
+	import format from '../data/format.js';
 	export let states;
 </script>
 
@@ -31,9 +32,9 @@
 							{state.name}
 						</a>
 						</td>
-						<td>{state.cases}</td>
-						<td>{state.deaths}</td>
-						<td>{state.tested}</td>
+						<td>{format.number(state.cases)}</td>
+						<td>{format.number(state.deaths)}</td>
+						<td>{format.number(state.tested)}</td>
 					</tr>
 				{/each}
 			</tbody>
