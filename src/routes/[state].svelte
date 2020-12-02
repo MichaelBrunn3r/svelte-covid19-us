@@ -1,6 +1,20 @@
 <script context="module">
+	import stateNames from "../data/stateNames.js";
+
 	export async function preload(page, session) {
-		return { state: page.params['state'] };
+		const state = page.params['state'];
+
+		if (stateNames.find(s => s.abbreviation === state) === undefined) {
+			this.error(404, "State Not Found");
+			return;
+		}
+
+		try {
+			return { state: state };
+		} catch(e) {
+			this.error(500, e);
+		}
+
 	}
 </script>
 

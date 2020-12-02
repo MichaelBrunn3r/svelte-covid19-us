@@ -5,7 +5,10 @@
 		try {
 			const usStats = await requests.usStats();
 			return { usStats };
-		} catch (e) {}
+		} catch (e) {
+			this.error(500, e);
+			return;
+		}
 	}
 </script>
 
@@ -13,8 +16,8 @@
 	import Stat from '../components/Stat.svelte';
 	import Chart from '../components/Chart.svelte';
 	import TableContainer from '../components/TableContainer.svelte';
-import About from './about.svelte';
-import Nav from '../components/Nav.svelte';
+	import About from './about.svelte';
+	import Nav from '../components/Nav.svelte';
 
 	export let usStats;
 </script>
