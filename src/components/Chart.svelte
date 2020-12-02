@@ -20,7 +20,7 @@
 
 	onDestroy(() => {
 		if(chart) {
-			chart.destryo();
+			chart.destroy();
 		}
 	});
 
