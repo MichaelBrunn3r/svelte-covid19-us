@@ -38,4 +38,4 @@
 
 <Stat {...usStats}/>
 <Chart historicData={historic} title="US Convid-19"/>
-<TableContainer/>
+<TableContainer data={statesTableData}/>
