@@ -91,6 +91,8 @@ function stateTable(data) {
 			deaths: data.death,
 			tested: data.totalTestResults
 		}
+	}).sort((a,b) => {
+		return a.name.localeCompare(b.name)
 	});
 }
 
