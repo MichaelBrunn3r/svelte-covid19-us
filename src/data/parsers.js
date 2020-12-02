@@ -41,7 +41,7 @@ function parseHistoric(data) {
 		},
 		{
 			label: 'Total Tested',
-			key: 'totalTestResult',
+			key: 'totalTestResults',
 			color: 'rgb(10, 30, 100)'
 		},
 		{

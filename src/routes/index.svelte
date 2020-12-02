@@ -35,5 +35,5 @@
 </div>
 
 <Stat {...usStats}/>
-<Chart/>
+<Chart historicData={historic} title="US Convid-19"/>
 <TableContainer/>
