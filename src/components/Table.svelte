@@ -24,7 +24,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				{#each states as state (states.abbrev)}
+				{#each states as state (state.abbrev)}
 					<tr>
 						<td>
 						<a href="{state.abbrev}">
