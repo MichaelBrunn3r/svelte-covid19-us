@@ -23,7 +23,63 @@ function parseStats(data) {
 	}
 }
 
+function historicUS(data) {
+	return parseHistoric(data);
+}
+
+function parseHistoric(data) {
+	return [
+		{
+			label: 'Cases',
+			key: 'positive',
+			color: 'rgb(100, 0, 200)'
+		},
+		{
+			label: 'Recovered',
+			key: 'recovered',
+			color: 'rgb(100, 100, 200)'
+		},
+		{
+			label: 'Total Tested',
+			key: 'totalTestResult',
+			color: 'rgb(10, 30, 100)'
+		},
+		{
+			label: 'Hospitalized',
+			key: 'hospitalizedCurrently',
+			color: 'rgb(20, 100, 230)'
+		},
+		{
+			label: 'Deaths',
+			key: 'death',
+			color: 'rgb(255, 99, 132)'
+		}
+	].reduce((prev, next) => {
+		if(data.filter(d => d[next.key] !== null).length > 4) {
+			prev.push(parseChart(data, next.key, next.label, next.color))
+		}
+		return prev;
+	}, []);
+}
+
+function parseChart(data, key, label, color) {
+	const chartData = data.map(data => {
+		return {
+			x: moment(data.date, 'YYYYMMDD'),
+			y: data[key] || 0
+		}
+	});
+
+	return {
+		label,
+		data: chartData,
+		fill: false,
+		borderColor: color
+	}
+}
+
 export default {
 	usStats,
-	stateStats
+	stateStats,
+	historicUS
 }

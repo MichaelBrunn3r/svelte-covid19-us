@@ -4,7 +4,8 @@
 	export async function preload() {
 		try {
 			const usStats = await requests.usStats();
-			return { usStats };
+			const historic = await requests.historicUS();
+			return { usStats, historic };
 		} catch (e) {
 			this.error(500, e);
 			return;
@@ -20,6 +21,7 @@
 	import Nav from '../components/Nav.svelte';
 
 	export let usStats;
+	export let historic;
 </script>
 
 <svelte:head>
