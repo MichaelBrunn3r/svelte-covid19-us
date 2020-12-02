@@ -90,7 +90,7 @@ function stateTable(data) {
 			name: stateNames.find(s => s.abbreviation === data.state).name,
 			cases: format.number(data.positive),
 			deaths: format.number(data.death),
-			tested: format.number(data.totalTestResult)
+			tested: format.number(data.totalTestResults)
 		}
 	});
 }
