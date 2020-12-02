@@ -1,8 +1,9 @@
 <script context="module">
 	import stateNames from "../data/stateNames.js";
+	import requests from '../data/requests.js';
 
 	export async function preload(page, session) {
-		const state = page.params['state'];
+		const state = page.params['state'].toUpperCase();
 
 		if (stateNames.find(s => s.abbreviation === state) === undefined) {
 			this.error(404, "State Not Found");
@@ -10,7 +11,8 @@
 		}
 
 		try {
-			return { state: state };
+			const stats = await requests.stateStats(state);
+			return { state, stats };
 		} catch(e) {
 			this.error(500, e);
 		}
@@ -24,6 +26,7 @@
 	import TableContainer from '../components/TableContainer.svelte';
 
 	export let state;
+	export let stats;
 </script>
 
 <svelte:head>
@@ -36,5 +39,5 @@
 	</div>
 </div>
 
-<Stat/>
+<Stat {...stats}/>
 <Chart/>
