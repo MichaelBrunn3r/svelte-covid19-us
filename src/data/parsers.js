@@ -27,6 +27,10 @@ function historicUS(data) {
 	return parseHistoric(data);
 }
 
+function historicState(data) {
+	return parseHistoric(data);
+}
+
 function parseHistoric(data) {
 	return [
 		{
@@ -55,7 +59,7 @@ function parseHistoric(data) {
 			color: 'rgb(255, 99, 132)'
 		}
 	].reduce((prev, next) => {
-		if(data.filter(d => d[next.key] !== null).length > 4) {
+		if(data.filter(d => d[next.key]).length > 4) {
 			prev.push(parseChart(data, next.key, next.label, next.color))
 		}
 		return prev;
@@ -81,5 +85,6 @@ function parseChart(data, key, label, color) {
 export default {
 	usStats,
 	stateStats,
-	historicUS
+	historicUS,
+	historicState
 }

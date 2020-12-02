@@ -4,6 +4,7 @@
 
 	export async function preload(page, session) {
 		const state = page.params['state'].toUpperCase();
+		const fullStateName = stateNames.find(s => s.abbreviation === state).name;
 
 		if (stateNames.find(s => s.abbreviation === state) === undefined) {
 			this.error(404, "State Not Found");
@@ -12,7 +13,8 @@
 
 		try {
 			const stats = await requests.stateStats(state);
-			return { state, stats };
+			const historic = await requests.historicState(state);
+			return { state, stats, historic, fullStateName };
 		} catch(e) {
 			this.error(500, e);
 		}
@@ -27,17 +29,19 @@
 
 	export let state;
 	export let stats;
+	export let historic;
+	export let fullStateName;
 </script>
 
 <svelte:head>
-	<title>Covid-19 - {state}</title>
+	<title>Covid-19 - {fullStateName}</title>
 </svelte:head>
 
 <div class="section header">
 	<div class="container">
-		<h1>Covid 19 - {state}</h1>
+		<h1>Covid 19 - {fullStateName}</h1>
 	</div>
 </div>
 
 <Stat {...stats}/>
-<Chart/>
+<Chart historicData={historic} title='Covid 19 - {fullStateName}'/>
