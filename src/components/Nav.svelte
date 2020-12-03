@@ -28,8 +28,8 @@
 	</div>
 	<div class="navbar-menu" class:is-active={isOpen}>
 		<div class="navbar-start">
-			<a href="/" class="navbar-item" class:is-active={segment == undefined}>Home</a>
-			<a href="/about" class="navbar-item" class:is-active={segment == 'about'}>About</a>
+			<a href="./" class="navbar-item" class:is-active={segment == undefined}>Home</a>
+			<a href="./about" class="navbar-item" class:is-active={segment == 'about'}>About</a>
 		</div>
 	</div>
 </nav>
